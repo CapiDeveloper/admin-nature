@@ -22,8 +22,8 @@ export const Menu = () => {
             <nav>
                 <ul className="flex justify-end items-center gap-5 mr-5 my-5">
                     {
-                        urls.map((url)=>(
-                            <li>
+                        urls.map((url,index)=>(
+                            <li key={index}>
                                 <Link 
                                 className={ clsx('font-semibold p-2 rounded',{
                                     'bg-blue-600 text-white': url.path == pathName

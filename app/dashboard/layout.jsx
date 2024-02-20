@@ -1,6 +1,6 @@
 const { Menu } = require("../../components/index");
 
-export default function({children}) {
+export default function Layout({children}) {
     return(
         <>
         <Menu />
