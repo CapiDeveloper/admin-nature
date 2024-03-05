@@ -14,9 +14,9 @@ export const Editar = () => {
 
     const isOpenModalProveedor = useUIStore((state) => state.isOpenModalProveedor);
     const isOpenModalCliente = useUIStore((state) => state.isOpenModalCliente);
-    
+
     const [data, setData] = useState({
-        agencia:""
+        agencia: ""
     });
 
     return (
@@ -31,7 +31,7 @@ export const Editar = () => {
                         </div>
                         <div>
                             <label htmlFor="agencia" className="block mb-2 text-base font-medium text-gray-900">Seleccione agencia/directo</label>
-                            <select onChange={()=>{}} id="agencia" value="" className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            <select onChange={() => { }} id="agencia" value="" className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                 <option value="" disabled>-- Seleccione --</option>
                                 <option value="US">Mistral</option>
                                 <option value="CA">Viator</option>
@@ -74,7 +74,87 @@ export const Editar = () => {
                     </div>
                 </fieldset>
                 <AgregarProveedor />
+                <table className="w-full text-sm text-left rtl:text-right mt-5">
+
+                    <tbody>
+                        <tr className="bg-white border-b">
+                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                Prov1. Galapagos Tours
+                            </th>
+                            <td className="px-6 py-4">
+                                100$
+                            </td>
+                            <td className="px-6 py-4">
+                                0$
+                            </td>
+                            <td className="px-6 py-4">
+                                <span className="bg-red-200 text-red-700 font-bold p-1 rounded-lg">Por pagar</span>
+                            </td>
+                        </tr>
+                        <tr className="bg-white border-b ">
+                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                Prov2. Galápagos Travelx
+                            </th>
+                            <td className="px-6 py-4">
+                                200$
+                            </td>
+                            <td className="px-6 py-4">
+                                100$
+                            </td>
+                            <td className="px-6 py-4">
+                                <span className="bg-indigo-200 text-indigo-700 font-bold p-1 rounded-lg">Abonado</span>
+                            </td>
+                        </tr>
+                        <tr className="bg-white border-b ">
+                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                Prov2. Hotel Zurita
+                            </th>
+                            <td className="px-6 py-4">
+                                300$
+                            </td>
+                            <td className="px-6 py-4">
+                                300$
+                            </td>
+                            <td className="px-6 py-4">
+                                <span className="bg-green-200 text-green-700 font-bold p-1 rounded-lg">Pagado</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <AgregarCliente />
+                <table className="w-full text-sm text-left rtl:text-right mt-5">
+
+                    <tbody>
+                        <tr className="bg-white border-b">
+                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                Abono
+                            </th>
+                            <td className="px-6 py-4">
+                                22/01/2024
+                            </td>
+                            <td className="px-6 py-4">
+                                Paypal
+                            </td>
+                            <td className="px-6 py-4">
+                                100$
+                            </td>
+                        </tr>
+                        <tr className="bg-white border-b ">
+                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                Cobro Final
+                            </th>
+                            <td className="px-6 py-4">
+                                25/01/2024
+                            </td>
+                            <td className="px-6 py-4">
+                                Banco Pichincha Nikolay
+                            </td>
+                            <td className="px-6 py-4">
+                                900$
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <fieldset className="my-7">
                     <div>
                         <label htmlFor="message" className="block mb-2 text-base font-medium text-gray-900">Notas</label>
