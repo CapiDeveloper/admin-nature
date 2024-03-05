@@ -4,7 +4,9 @@ import { useUIStore } from "../../../store";
 export const ModalCobroCliente = () => {
 
   const closeModalCliente = useUIStore((state) => state.closeModalCliente)
+  const onHandleSubmit = ()=>{
 
+  }
   return (
     <>
       <div className="flex items-center justify-center">
@@ -25,10 +27,16 @@ export const ModalCobroCliente = () => {
                     </div>
                     <div className="w-full mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                       <h3 className="text-lg leading-6 font-medium text-gray-900" id="modal-headline"> Agregar cobro a Cliente </h3>
-                      {/* <div className="mt-2">
-                        <p className="text-sm text-gray-500"> Ingrese el nombre del cliente: </p>
-                        <input type="text" className="mt-2 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring focus:border-blue-500" placeholder="Nombre del proveedor aqui" />
-                      </div> */}
+                      <div className="mt-3">
+                        <p className="text-sm text-gray-500"> Ingreser el pago al proveedor: </p>
+                        <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                          <option value="" disabled>-- Seleccione --</option>
+                          <option value="1">Abono</option>
+                          <option value="2">Cobro final</option>
+                          <option value="3">Cobro Total</option>
+                          <option value="4">Diferencia</option>
+                        </select>
+                      </div>
                       <div className="mt-5">
                         <p className="text-sm text-gray-500"> Ingreser el pago al proveedor: </p>
                         <input min={1} type="number" className="mt-2 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring focus:border-blue-500" placeholder="Pago al proveedor aqui" />
@@ -38,7 +46,7 @@ export const ModalCobroCliente = () => {
                 </div>
                 <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                   <button type="button" className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"> Agregar </button>
-                  <button onClick={closeModalCliente}  type="button" className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"> Cancelar </button>
+                  <button onClick={closeModalCliente} type="button" className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"> Cancelar </button>
                 </div>
               </div>
             </div>
