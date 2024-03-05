@@ -1,18 +1,29 @@
+'use client'
+
+import { RxUpdate } from "react-icons/rx";
+
 import Link from "next/link"
+import { useUIStore } from "../../../../store";
 
 export const Card = () => {
+
+  const user = useUIStore((state) => state.user)
+
   return (
     <article className="rounded-lg overflow-hidden border p-3">
       <h1 className="bg-green-500 p-2 text-xl rounded-lg text-white font-bold text-center">Mágico Isabela</h1>
-      <ul className="flex flex-col gap-2 mt-3">
+      <ul className="flex flex-col gap-2 mt-3 relative">
+        {
+          (user.rol == 1) &&
+          <li className="flex items-center gap-2 text-gray-500 absolute top-0 right-0"><RxUpdate /> 24/12/2024</li>
+        }
         <li><span className="font-bold">Agencia:</span> Maistral</li>
         <li><span className="font-bold">Fecha:</span> 22/01/2024 hasta 30/01/2024</li>
         <li><span className="font-bold">Valor proforma:</span> 1000$</li>
         <li><span className="font-bold">Valor cobrado:</span> 100$</li>
-        <li><span className="font-bold">Por cobrar:</span> 100%</li>
+        <li><span className="font-bold">Por cobrar:</span> 0</li>
         <li><span className="font-bold">Vendedor:</span> Christian Nieves</li>
         <li><span className="font-bold">Creado:</span> 10/01/2024</li>
-        <li><span className="font-bold">Agencia:</span> Maistral</li>
       </ul>
 
       <div className="h-[2px] bg-gray-200 w-11/12 my-5 mx-auto"></div>

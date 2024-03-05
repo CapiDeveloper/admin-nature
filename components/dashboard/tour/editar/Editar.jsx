@@ -14,6 +14,8 @@ export const Editar = () => {
 
     const isOpenModalProveedor = useUIStore((state) => state.isOpenModalProveedor);
     const isOpenModalCliente = useUIStore((state) => state.isOpenModalCliente);
+    const user = useUIStore((state) => state.user);
+
 
     const [data, setData] = useState({
         agencia: ""
@@ -90,6 +92,13 @@ export const Editar = () => {
                             <td className="px-6 py-4">
                                 <span className="bg-red-200 text-red-700 font-bold p-1 rounded-lg">Por pagar</span>
                             </td>
+                            {
+                                (user?.rol == 0)&&
+                                <td className="px-6 py-4 flex gap-2">
+                                    <button className="bg-blue-700 hover:bg-blue-900 text-white p-1 rounded-lg" type="button">Editar</button>
+                                    <button className="bg-red-700 hover:bg-red-900 text-white p-1 rounded-lg" type="button">Eliminar</button>
+                                </td>
+                            }
                         </tr>
                         <tr className="bg-white border-b ">
                             <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
@@ -104,6 +113,13 @@ export const Editar = () => {
                             <td className="px-6 py-4">
                                 <span className="bg-indigo-200 text-indigo-700 font-bold p-1 rounded-lg">Abonado</span>
                             </td>
+                            {
+                                (user?.rol == 0)&&
+                                <td className="px-6 py-4 flex gap-2">
+                                    <button className="bg-blue-700 hover:bg-blue-900 text-white p-1 rounded-lg" type="button">Editar</button>
+                                    <button className="bg-red-700 hover:bg-red-900 text-white p-1 rounded-lg" type="button">Eliminar</button>
+                                </td>
+                            }
                         </tr>
                         <tr className="bg-white border-b ">
                             <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
@@ -118,6 +134,13 @@ export const Editar = () => {
                             <td className="px-6 py-4">
                                 <span className="bg-green-200 text-green-700 font-bold p-1 rounded-lg">Pagado</span>
                             </td>
+                            {
+                                (user?.rol == 0)&&
+                                <td className="px-6 py-4 flex gap-2">
+                                    <button className="bg-blue-700 hover:bg-blue-900 text-white p-1 rounded-lg" type="button">Editar</button>
+                                    <button className="bg-red-700 hover:bg-red-900 text-white p-1 rounded-lg" type="button">Eliminar</button>
+                                </td>
+                            }
                         </tr>
                     </tbody>
                 </table>

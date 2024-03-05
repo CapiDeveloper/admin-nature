@@ -1,11 +1,16 @@
+'use client'
+
 import { CiReceipt } from "react-icons/ci"
+import { useUIStore } from "../../../../store"
 
 export const Registro = () => {
 
     const onHandelSubmit = ()=>{}
-
+    const user = useUIStore((state) => state.user)
+    console.log(user)
     return (
         <form className="max-w-3xl mx-auto bg-white rounded-xl p-5 border-2 my-10">
+                <p>{JSON.stringify(user)}</p>
                 <legend className="text-2xl font-bold bg-blue-100 text-blue-950 text-center rounded-full px-5 py-2 flex items-center justify-center gap-2">Registrar Tour <CiReceipt size={30} /></legend>
                 <fieldset className="mt-5">
                     <div className="grid sm:grid-cols-2 md:grid-cols-3 items-center sm:gap-10">
