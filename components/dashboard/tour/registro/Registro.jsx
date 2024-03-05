@@ -1,8 +1,7 @@
-
-
 import { CiReceipt } from "react-icons/ci"
 
 export const Registro = () => {
+
     return (
         <form className="max-w-3xl mx-auto bg-white rounded-xl p-5 border-2 my-10">
                 <legend className="text-2xl font-bold bg-blue-100 text-blue-950 text-center rounded-full px-5 py-2 flex items-center justify-center gap-2">Registrar Tour <CiReceipt size={30} /></legend>
@@ -13,8 +12,8 @@ export const Registro = () => {
                             <input type="text" id="tour" className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Ejemplo: Mágico Isabela 5N/4N" required />
                         </div>
                         <div>
-                            <label for="countries" class="block mb-2 text-base font-medium text-gray-900">Seleccione agencia/directo</label>
-                            <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            <label for="countries" className="block mb-2 text-base font-medium text-gray-900">Seleccione agencia/directo</label>
+                            <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                 <option selected disabled>-- Seleccione --</option>
                                 <option value="US">Mistral</option>
                                 <option value="CA">Viator</option>
@@ -58,8 +57,8 @@ export const Registro = () => {
                 </fieldset>
                 <fieldset className="my-7">
                     <div>
-                        <label for="message" class="block mb-2 text-base font-medium text-gray-900">Notas</label>
-                        <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Ingrese informacion adicional si desea.."></textarea>
+                        <label for="message" className="block mb-2 text-base font-medium text-gray-900">Notas</label>
+                        <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Ingrese informacion adicional si desea.."></textarea>
                     </div>
                 </fieldset>
                 <div className="flex justify-end">

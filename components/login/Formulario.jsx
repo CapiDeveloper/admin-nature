@@ -14,9 +14,10 @@ export const Formulario = () => {
     password: ''
   });
 
-  const onHandleSubmit = (e)=>{
+  const onHandleSubmit = async(e)=>{
     e.preventDefault();
-    if([credenciales.email,credenciales.password].includes('')) return; 
+    if([credenciales.email,credenciales.password].includes('')) return;
+    
     router.push('/dashboard');
   }
   return (

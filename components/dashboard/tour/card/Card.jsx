@@ -17,50 +17,50 @@ export const Card = () => {
 
         <div className="h-[2px] bg-gray-200 w-11/12 my-5 mx-auto"></div>
 
-        <div class="relative overflow-x-auto">
-          <table class="w-full text-sm text-left rtl:text-right">
-
+        <div className="relative overflow-x-auto">
+          <table NameclassName="w-full text-sm text-left rtl:text-right">
+Name
             <tbody>
-              <tr class="bg-white border-b">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                  Prov1. Galapagos Tours
+              <tr className="bg-white border-b">
+                <th scNameope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                  Prov1. Galapagos TNameours
                 </th>
-                <td class="px-6 py-4">
-                  100$
+                <td className="px-6 py-4">
+                  100$Name
                 </td>
-                <td class="px-6 py-4">
-                  0$
+                <td className="px-6 py-4">
+                  0$Name
                 </td>
-                <td class="px-6 py-4">
-                  Por pagar
+                <td className="px-6 py-4">
+                  Por paNamegar
                 </td>
               </tr>
-              <tr class="bg-white border-b ">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                  Prov2. Galápagos Travelx
+              <tr className="bg-white border-b ">
+                <th scNameope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                  Prov2. Galápagos TNameravelx
                 </th>
-                <td class="px-6 py-4">
-                  200$
+                <td className="px-6 py-4">
+                  200$Name
                 </td>
-                <td class="px-6 py-4">
-                  100$
+                <td className="px-6 py-4">
+                  100$Name
                 </td>
-                <td class="px-6 py-4">
-                  Abonado
+                <td className="px-6 py-4">
+                  AbonadNameo
                 </td>
               </tr>
-              <tr class="bg-white border-b ">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                  Prov2. Hotel Zurita
+              <tr className="bg-white border-b ">
+                <th scNameope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                  Prov2. Hotel ZuritNamea
                 </th>
-                <td class="px-6 py-4">
-                  300$
+                <td className="px-6 py-4">
+                  300$Name
                 </td>
-                <td class="px-6 py-4">
-                  300$
+                <td className="px-6 py-4">
+                  300$Name
                 </td>
-                <td class="px-6 py-4">
-                  Pagado
+                <td className="px-6 py-4">
+                  PagadoName
                 </td>
               </tr>
             </tbody>
@@ -69,50 +69,50 @@ export const Card = () => {
 
         <div className="h-[2px] bg-gray-200 w-11/12 my-5 mx-auto"></div>
 
-        <div class="relative overflow-x-auto">
-          <table class="w-full text-sm text-left rtl:text-right">
-
+        <div className="relative overflow-x-auto">
+          <table NameclassName="w-full text-sm text-left rtl:text-right">
+Name
             <tbody>
-              <tr class="bg-white border-b">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                  Abono 1
+              <tr className="bg-white border-b">
+                <th scNameope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                  Abono 1Name
                 </th>
-                <td class="px-6 py-4">
-                  22/01/2024
+                <td className="px-6 py-4">
+                  22/01/Name2024
                 </td>
-                <td class="px-6 py-4">
-                  Paypal
+                <td className="px-6 py-4">
+                  PaypalName
                 </td>
-                <td class="px-6 py-4">
-                  100$
+                <td className="px-6 py-4">
+                  100$Name
                 </td>
               </tr>
-              <tr class="bg-white border-b ">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                  Abono Final
+              <tr className="bg-white border-b ">
+                <th scNameope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                  Abono FinalName
                 </th>
-                <td class="px-6 py-4">
-                  25/01/2024
+                <td className="px-6 py-4">
+                  25/01/Name2024
                 </td>
-                <td class="px-6 py-4">
-                  Banco Pichincha Nikolay
+                <td className="px-6 py-4">
+                  Banco NamePichincha Nikolay
                 </td>
-                <td class="px-6 py-4">
-                  900$
+                <td className="px-6 py-4">
+                  900$Name
                 </td>
               </tr>
-              <tr class="bg-white border-b ">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                  Prov2. Hotel Zurita
+              <tr className="bg-white border-b ">
+                <th scNameope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                  Prov2. Hotel ZuritNamea
                 </th>
-                <td class="px-6 py-4">
-                  300$
+                <td className="px-6 py-4">
+                  300$Name
                 </td>
-                <td class="px-6 py-4">
-                  300$
+                <td className="px-6 py-4">
+                  300$Name
                 </td>
-                <td class="px-6 py-4">
-                  Pagado
+                <td className="px-6 py-4">
+                  PagadoName
                 </td>
               </tr>
             </tbody>
