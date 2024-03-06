@@ -1,3 +1,8 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
   provider = "prisma-client-js"
@@ -9,10 +14,70 @@ datasource db {
 }
 
 model User {
-  id Int @id @default(autoincrement())
-  name String
-  email String @unique
+  id       String @id @default(uuid())
+  nombre   String
   password String
-  createAt DateTime @default(now())
-  updateAt DateTime @updatedAt
+  email    String @unique
+  rol      Int
+}
+
+model metodo_pago {
+  id         String @id @default(uuid())
+  nombre     String
+  porcentaje Int
+}
+
+model agencia {
+  id         String @id @default(uuid())
+  nombre     String
+  porcentaje Int
+}
+
+model estado_pago {
+  id     String @id @default(uuid())
+  nombre String
+  color  String
+}
+
+model Tour {
+  id                     String   @id @default(uuid())
+  nombre                 String
+  nombre_pasajero        String
+  nombre_agencia_directa String?
+  inicio                 DateTime
+  finaliza               DateTime
+  num_pax                Int
+  valor_proforma         Decimal
+  numero_proforma        Int
+  nota                   String
+  actualizado            DateTime @updatedAt
+  valor_cobrado          Decimal // Suma pago Clientes
+  nombre_agencia         String // Foregin key
+  user                   String // Foregin key
+}
+
+model proveedor {
+  id     String   @id @default(uuid())
+  nombre String
+  pago   Decimal
+  tour   String // Foregin key
+  estado String // Foregin key
+  fecha  DateTime @updatedAt
+}
+
+model pago_cliente {
+  id          String   @id @default(uuid())
+  tour        String // Foregin key
+  user        String // Foregin key
+  metodo_pago String // Foregin key
+  cantidad    Decimal
+  registro    DateTime @default(now())
+  actualizar  DateTime @updatedAt
+}
+
+model gasto {
+  id       String  @id @default(uuid())
+  tour     String // Foregin key
+  user     String // Foregin key
+  cantidad Decimal
 }
