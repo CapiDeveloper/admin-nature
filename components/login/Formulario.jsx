@@ -13,14 +13,14 @@ export const Formulario = () => {
   const [credenciales, setCredenciales] = useState({
     email: '',
     password: '',
-    rol: 1
+    rol: 0
   });
 
   const onHandleSubmit = async (e) => {
     e.preventDefault();
 
     if ([credenciales.email, credenciales.password].includes('')) return;
-    addUser( resp.user );
+    addUser( credenciales );
     router.push('/dashboard');
     return;
     // const data = await fetch('/api/autenticacion', {
