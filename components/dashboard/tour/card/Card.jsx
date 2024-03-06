@@ -14,7 +14,7 @@ export const Card = () => {
       <h1 className="bg-green-500 p-2 text-xl rounded-lg text-white font-bold text-center">Mágico Isabela</h1>
       <ul className="flex flex-col gap-2 mt-3 relative">
         {
-          (user.rol == 1) &&
+          (user.rol == 0) &&
           <li className="flex items-center gap-2 text-gray-500 absolute top-0 right-0"><RxUpdate /> 24/12/2024</li>
         }
         <li><span className="font-bold">Agencia:</span> Maistral</li>

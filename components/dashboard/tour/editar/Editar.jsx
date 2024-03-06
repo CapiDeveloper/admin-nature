@@ -161,6 +161,13 @@ export const Editar = () => {
                             <td className="px-6 py-4">
                                 100$
                             </td>
+                            {
+                                (user?.rol == 0)&&
+                                <td className="px-6 py-4 flex gap-2">
+                                    <button className="bg-blue-700 hover:bg-blue-900 text-white p-1 rounded-lg" type="button">Editar</button>
+                                    <button className="bg-red-700 hover:bg-red-900 text-white p-1 rounded-lg" type="button">Eliminar</button>
+                                </td>
+                            }
                         </tr>
                         <tr className="bg-white border-b ">
                             <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
@@ -175,6 +182,13 @@ export const Editar = () => {
                             <td className="px-6 py-4">
                                 900$
                             </td>
+                            {
+                                (user?.rol == 0)&&
+                                <td className="px-6 py-4 flex gap-2">
+                                    <button className="bg-blue-700 hover:bg-blue-900 text-white p-1 rounded-lg" type="button">Editar</button>
+                                    <button className="bg-red-700 hover:bg-red-900 text-white p-1 rounded-lg" type="button">Eliminar</button>
+                                </td>
+                            }
                         </tr>
                     </tbody>
                 </table>
