@@ -28,7 +28,7 @@ export const ModalCobroCliente = () => {
                     <div className="w-full mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                       <h3 className="text-lg leading-6 font-medium text-gray-900" id="modal-headline"> Agregar cobro a Cliente </h3>
                       <div className="mt-3">
-                        <p className="text-sm text-gray-500"> Ingreser el pago al proveedor: </p>
+                        <p className="text-sm text-gray-500"> Pago del cliente: </p>
                         <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                           <option value="" disabled>-- Seleccione --</option>
                           <option value="1">Abono</option>
@@ -37,8 +37,20 @@ export const ModalCobroCliente = () => {
                           <option value="4">Diferencia</option>
                         </select>
                       </div>
+                      <div className="mt-3">
+                        <p className="text-sm text-gray-500"> Ingrese el metodo de pago: </p>
+                        <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                          <option value="" disabled>-- Seleccione --</option>
+                          <option value="1">BOFA</option>
+                          <option value="2">PayPal</option>
+                          <option value="3">PayPhone</option>
+                          <option value="4">WeTravel</option>
+                          <option value="5">Pichincha Nature</option>
+                          <option value="6">Pichincha Nikolay</option>
+                        </select>
+                      </div>
                       <div className="mt-5">
-                        <p className="text-sm text-gray-500"> Ingreser el pago al proveedor: </p>
+                        <p className="text-sm text-gray-500"> Ingreser el cobro al cliente: </p>
                         <input min={1} type="number" className="mt-2 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring focus:border-blue-500" placeholder="Pago al proveedor aqui" />
                       </div>
                     </div>
