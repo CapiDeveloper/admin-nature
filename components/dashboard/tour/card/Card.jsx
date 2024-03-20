@@ -24,7 +24,7 @@ export const Card = ({ tour }) => {
         body: JSON.stringify(id),
       });
       const data = await resp.json();
-      deleteHistorialTour(data?.id)
+      deleteHistorialTour(data)
     } catch (error) {
       alert('No se puede eliminar el tour');
       throw error; 

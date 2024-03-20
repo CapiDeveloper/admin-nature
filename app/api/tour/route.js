@@ -84,6 +84,13 @@ export async function DELETE(request) {
     } catch (error) {
 
     }
+    try {
+        await prisma.Pago_cliente.deleteMany({
+            where: { tourId: body }
+        })
+    } catch (error) {
+
+    }
     // Elimina Gastos
     try {
         await prisma.Gasto.deleteMany({
@@ -103,7 +110,7 @@ export async function DELETE(request) {
     const tour = await prisma.Tour.delete({
         where: { id: body },
     })
-    return NextResponse.json(tour);
+    return NextResponse.json(body);
 }
 
 export async function GET(request) {
