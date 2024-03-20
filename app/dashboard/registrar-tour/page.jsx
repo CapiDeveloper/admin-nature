@@ -10,9 +10,8 @@ export default function Home() {
   return (
     <>
       {
-        (user.rol == 1) && (<Registro />)
-      }
-      <div className="flex flex-col items-center justify-center">
+        (user.rol == 1) ? (<Registro />):
+        (<div className="flex flex-col items-center justify-center">
         <Image
           src={"/sin-acceso.svg"}
           height={300}
@@ -20,7 +19,8 @@ export default function Home() {
           alt="img"
         />
         <p className="font-bold text-2xl">No tiene acceso</p>
-      </div>
+      </div>)
+      }
     </>
   );
 }

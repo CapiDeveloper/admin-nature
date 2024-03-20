@@ -13,71 +13,134 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id       String @id @default(uuid())
-  nombre   String
-  password String
-  email    String @unique
-  rol      Int
+model CategoriaTour {
+  id        String     @id @default(uuid())
+  nombre    String
+  tours     Tour[]
+  programas Programa[]
 }
 
-model metodo_pago {
-  id         String @id @default(uuid())
-  nombre     String
-  porcentaje Int
-}
-
-model agencia {
-  id         String @id @default(uuid())
-  nombre     String
-  porcentaje Int
-}
-
-model estado_pago {
+model CategoriaHotel {
   id     String @id @default(uuid())
   nombre String
-  color  String
+  tours  Tour[]
+}
+
+model Metodo_pago {
+  id            String         @id @default(uuid())
+  nombre        String
+  porcentaje    Int
+  pago_clientes Pago_cliente[]
+}
+
+model Estado_pago {
+  id            String         @id @default(uuid())
+  nombre        String
+  color         String
+  proveedores   Proveedor[]
+  pago_clientes Pago_cliente[]
+}
+
+model Agencia {
+  id         String @id @default(uuid())
+  nombre     String
+  porcentaje Int
+  tours      Tour[]
+}
+
+model Programa {
+  id              String        @id @default(uuid())
+  nombre          String
+  codigo          String?
+  nota            String?
+  categoria_tour  CategoriaTour @relation(fields: [categoriaTourId], references: [id])
+  categoriaTourId String
+  tours           Tour[]
+  comisiones      Comision[]
+}
+
+model Comision {
+  id         String   @id @default(uuid())
+  cantidad   Decimal
+  mes        String
+  programa   Programa @relation(fields: [programaId], references: [id])
+  programaId String
+  tour       Tour     @relation(fields: [tourId], references: [id])
+  tourId     String
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String
 }
 
 model Tour {
-  id                     String   @id @default(uuid())
-  nombre                 String
-  nombre_pasajero        String
-  nombre_agencia_directa String?
-  inicio                 DateTime
-  finaliza               DateTime
-  num_pax                Int
-  valor_proforma         Decimal
-  numero_proforma        Int
-  nota                   String
-  actualizado            DateTime @updatedAt
-  valor_cobrado          Decimal // Suma pago Clientes
-  nombre_agencia         String // Foregin key
-  user                   String // Foregin key
+  id              String    @id @default(uuid())
+  nombre_pasajero String
+  inicio          DateTime?
+  finaliza        DateTime?
+  num_pax         Int
+  valor_proforma  Decimal
+  numero_proforma Int
+  nota            String?
+  actualizado     DateTime  @updatedAt
+  valor_cobrado   Decimal? // Suma pago Clientes
+
+  programa   Programa @relation(fields: [programaId], references: [id])
+  programaId String
+
+  categoria_tour  CategoriaTour @relation(fields: [categoriaTourId], references: [id])
+  categoriaTourId String
+
+  categoria_hotel  CategoriaHotel @relation(fields: [categoriaHotelId], references: [id])
+  categoriaHotelId String
+
+  agencia   Agencia @relation(fields: [agenciaId], references: [id])
+  agenciaId String
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  proveedores  Proveedor[]
+  pago_cliente Pago_cliente[]
+  gastos       Gasto[]
+  comisiones   Comision[]
 }
 
-model proveedor {
-  id     String   @id @default(uuid())
-  nombre String
-  pago   Decimal
-  tour   String // Foregin key
-  estado String // Foregin key
-  fecha  DateTime @updatedAt
+model Proveedor {
+  id             String      @id @default(uuid())
+  nombre         String
+  pago           Decimal
+  fecha          DateTime    @updatedAt
+  tour           Tour        @relation(fields: [tourId], references: [id])
+  tourId         String
+  estado_pago    Estado_pago @relation(fields: [estado_pago_Id], references: [id])
+  estado_pago_Id String
 }
 
-model pago_cliente {
-  id          String   @id @default(uuid())
-  tour        String // Foregin key
-  user        String // Foregin key
-  metodo_pago String // Foregin key
-  cantidad    Decimal
-  registro    DateTime @default(now())
-  actualizar  DateTime @updatedAt
+model User {
+  id         String     @id @default(uuid())
+  nombre     String
+  password   String
+  email      String     @unique
+  rol        Int
+  tours      Tour[]
+  comisiones Comision[]
 }
 
-model gasto {
+model Pago_cliente {
+  id             String      @id @default(uuid())
+  cantidad       Decimal
+  registro       DateTime    @default(now())
+  actualizar     DateTime    @updatedAt
+  tour           Tour        @relation(fields: [tourId], references: [id])
+  tourId         String
+  estado_pago    Estado_pago @relation(fields: [estado_pago_Id], references: [id])
+  estado_pago_Id String
+  metodo_pago    Metodo_pago @relation(fields: [metodo_pago_Id], references: [id])
+  metodo_pago_Id String
+}
+
+model Gasto {
   id       String  @id @default(uuid())
-  tour     String // Foregin key
-  user     String // Foregin key
+  tour     Tour    @relation(fields: [tourId], references: [id])
+  tourId   String
   cantidad Decimal
 }

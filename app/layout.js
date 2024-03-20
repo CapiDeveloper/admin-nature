@@ -20,7 +20,6 @@ export default function RootLayout({ children }) {
       router.push('login');
       return;    
     }
-    
     addUser(sesionLocalStorage);
   }, [])
 

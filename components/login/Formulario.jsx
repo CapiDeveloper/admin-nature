@@ -20,24 +20,22 @@ export const Formulario = () => {
     e.preventDefault();
 
     if ([credenciales.email, credenciales.password].includes('')) return;
-    addUser( credenciales );
-    router.push('/dashboard');
-    return;
-    // const data = await fetch('/api/autenticacion', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify( credenciales ),
-    // })
 
-    // const resp = await data.json()
-    // if(resp.valido){
-    //     addUser( resp.user );
-    //     localStorage.setItem("sesion", JSON.stringify(credenciales))
-    //     router.push('/dashboard');
-    //     return;
-    // }
+    const data = await fetch('/api/autenticacion', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify( credenciales ),
+    })
+
+    const resp = await data.json()
+    if(resp.valido){
+        addUser( resp.user );
+        localStorage.setItem("sesion", JSON.stringify(resp.user))
+        router.push('/dashboard');
+        return;
+    }
     alert('Datos no validos');
   }
   return (

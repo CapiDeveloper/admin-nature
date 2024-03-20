@@ -1,12 +1,41 @@
+'use client'
+
+import { useEffect, useState } from "react";
 import { Card } from "../../../components/dashboard/tour/card/Card";
+import { useUIStore } from "../../../store";
+import { FiltroHistorial, Spinner } from "../../../components";
 
 export default function Home() {
+
+  const user = useUIStore((state) => state.user);
+  const setHistorialTours = useUIStore((state) => state.setHistorialTours);
+  const historialTours = useUIStore((state) => state.historialTours);
+  
+  const [tours, setTours] = useState({
+    cargando: true
+  });
+
+  const fetchTours = async () => {
+    try {
+      const resp = await fetch(`/api/tours?id=${user.id}`);
+      const toursData = await resp.json();
+      setTours({
+        cargando: false,
+      });
+      setHistorialTours(toursData.tours);
+    } catch (error) {
+      alert('Algo paso en el servidor, llamar a soporte')
+      throw error;
+    }
+  };
+
+  useEffect(() => {
+    if (user.id == undefined) return;
+    fetchTours();
+  }, [user]);
   return (
     <>
-      <form className="max-w-sm mx-auto flex flex-col items-center gap-3">
-        <label htmlFor="mes" className="font-bold">Seleccione el mes</label>
-        <input type="month" id="mes" name="mes" className="p-2 border rounded-lg" />
-      </form>
+      <FiltroHistorial />
 
       <div className="flex justify-end gap-5 w-11/12 mr-0 mt-10">
         <div className="flex items-center gap-2">
@@ -18,9 +47,18 @@ export default function Home() {
           <p>Completos</p>
         </div>
       </div>
-      <div className="grid md:grid-cols-3 w-11/12 mx-auto mb-5">
-        <Card />
-      </div>
+      {
+        (tours.cargando == true) ?
+          <Spinner /> :
+          <div className="grid md:grid-cols-3 w-11/12 mx-auto mb-5 gap-5">
+            {
+              (historialTours?.length > 0) ?
+                historialTours?.map((tour) => (
+                  <Card key={tour.id} tour={tour} />
+                )) : <p>No hay registros</p>
+            }
+          </div>
+      }
     </>
   );
 }

@@ -7,15 +7,15 @@ import { usePathname, useRouter } from 'next/navigation';
 const urls = [
     { opcion: 'Inicio', path:'/dashboard' },
     { opcion: 'Registrar', path:'/dashboard/registrar-tour' },
-    { opcion: 'Historial', path:'/dashboard/historial' }
-
+    { opcion: 'Historial', path:'/dashboard/historial' },
+    { opcion: 'Programas', path:'/dashboard/programas' }
 ];
 
 export const Menu = () => {
 
   const pathName = usePathname();
-  const router = useRouter()
-    
+  const router = useRouter();
+  
   return (
     <>
         <header>

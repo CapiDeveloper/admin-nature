@@ -1,7 +1,8 @@
 import { Editar } from '../../../../components/dashboard/tour/editar/Editar'
 
-export default function Page() {
+export default function Page({params}) {
+    
     return (
-        <Editar />
+        <Editar id={params?.id} />
     );
 }
