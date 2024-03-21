@@ -53,16 +53,27 @@ CREATE TABLE "Programa" (
 );
 
 -- CreateTable
+CREATE TABLE "Comision" (
+    "id" TEXT NOT NULL,
+    "cantidad" DECIMAL(65,30) NOT NULL,
+    "mes" TEXT NOT NULL,
+    "programaId" TEXT NOT NULL,
+    "tourId" TEXT NOT NULL,
+    "userId" TEXT NOT NULL,
+
+    CONSTRAINT "Comision_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "Tour" (
     "id" TEXT NOT NULL,
     "nombre_pasajero" TEXT NOT NULL,
-    "nombre_agencia_directa" TEXT,
     "inicio" TIMESTAMP(3),
     "finaliza" TIMESTAMP(3),
     "num_pax" INTEGER NOT NULL,
     "valor_proforma" DECIMAL(65,30) NOT NULL,
     "numero_proforma" INTEGER NOT NULL,
-    "nota" TEXT NOT NULL,
+    "nota" TEXT,
     "actualizado" TIMESTAMP(3) NOT NULL,
     "valor_cobrado" DECIMAL(65,30),
     "programaId" TEXT NOT NULL,
@@ -72,17 +83,6 @@ CREATE TABLE "Tour" (
     "userId" TEXT NOT NULL,
 
     CONSTRAINT "Tour_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "User" (
-    "id" TEXT NOT NULL,
-    "nombre" TEXT NOT NULL,
-    "password" TEXT NOT NULL,
-    "email" TEXT NOT NULL,
-    "rol" INTEGER NOT NULL,
-
-    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -98,12 +98,24 @@ CREATE TABLE "Proveedor" (
 );
 
 -- CreateTable
+CREATE TABLE "User" (
+    "id" TEXT NOT NULL,
+    "nombre" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "rol" INTEGER NOT NULL,
+
+    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "Pago_cliente" (
     "id" TEXT NOT NULL,
     "cantidad" DECIMAL(65,30) NOT NULL,
     "registro" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "actualizar" TIMESTAMP(3) NOT NULL,
     "tourId" TEXT NOT NULL,
+    "estado_pago_Id" TEXT NOT NULL,
     "metodo_pago_Id" TEXT NOT NULL,
 
     CONSTRAINT "Pago_cliente_pkey" PRIMARY KEY ("id")
@@ -123,6 +135,15 @@ CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- AddForeignKey
 ALTER TABLE "Programa" ADD CONSTRAINT "Programa_categoriaTourId_fkey" FOREIGN KEY ("categoriaTourId") REFERENCES "CategoriaTour"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Comision" ADD CONSTRAINT "Comision_programaId_fkey" FOREIGN KEY ("programaId") REFERENCES "Programa"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Comision" ADD CONSTRAINT "Comision_tourId_fkey" FOREIGN KEY ("tourId") REFERENCES "Tour"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Comision" ADD CONSTRAINT "Comision_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Tour" ADD CONSTRAINT "Tour_programaId_fkey" FOREIGN KEY ("programaId") REFERENCES "Programa"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -147,6 +168,9 @@ ALTER TABLE "Proveedor" ADD CONSTRAINT "Proveedor_estado_pago_Id_fkey" FOREIGN K
 
 -- AddForeignKey
 ALTER TABLE "Pago_cliente" ADD CONSTRAINT "Pago_cliente_tourId_fkey" FOREIGN KEY ("tourId") REFERENCES "Tour"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Pago_cliente" ADD CONSTRAINT "Pago_cliente_estado_pago_Id_fkey" FOREIGN KEY ("estado_pago_Id") REFERENCES "Estado_pago"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Pago_cliente" ADD CONSTRAINT "Pago_cliente_metodo_pago_Id_fkey" FOREIGN KEY ("metodo_pago_Id") REFERENCES "Metodo_pago"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
