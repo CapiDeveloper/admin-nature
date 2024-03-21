@@ -39,29 +39,6 @@ export const Editar = ({ id }) => {
         nota: "",
     })
 
-    async function fetchData() {
-        try {
-            const [usersResponse, productsResponse, clientesResponse] = await Promise.all([
-                fetch(`/api/tour?id=${id}`),
-                fetch(`/api/proveedor?id=${id}`),
-                fetch(`/api/lista-clientes-especifico?id=${id}`),
-            ]);
-
-            const usersData = await usersResponse.json();
-            const productsData = await productsResponse.json();
-            const clientesData = await clientesResponse.json();
-
-            setTour(usersData);
-            getProveedores(productsData);
-            getPagoClientes(clientesData);
-
-
-        } catch (error) {
-            alert('Error al obtener datos para editar')
-            throw error;
-        }
-    }
-
     const formatoFechaParaInputDate = (fecha) => {
         return fecha.split('T')[0];
     }
@@ -74,8 +51,30 @@ export const Editar = ({ id }) => {
     }
 
     useEffect(() => {
+        async function fetchData() {
+            try {
+                const [usersResponse, productsResponse, clientesResponse] = await Promise.all([
+                    fetch(`/api/tour?id=${id}`),
+                    fetch(`/api/proveedor?id=${id}`),
+                    fetch(`/api/lista-clientes-especifico?id=${id}`),
+                ]);
+    
+                const usersData = await usersResponse.json();
+                const productsData = await productsResponse.json();
+                const clientesData = await clientesResponse.json();
+    
+                setTour(usersData);
+                getProveedores(productsData);
+                getPagoClientes(clientesData);
+    
+    
+            } catch (error) {
+                alert('Error al obtener datos para editar')
+                throw error;
+            }
+        }
         fetchData();
-    }, []);
+    }, [getPagoClientes, getProveedores,id]);
 
     const onHandleSubmit = async (e) => {
         e.preventDefault();

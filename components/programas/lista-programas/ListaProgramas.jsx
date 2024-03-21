@@ -19,7 +19,7 @@ export const ListaProgramas = () => {
             }
         }
         getListaPrograma();
-    }, [])
+    }, [getProgramas])
 
     return (
         <table className="w-full text-sm text-left mt-5">

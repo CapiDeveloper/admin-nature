@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
       return;    
     }
     addUser(sesionLocalStorage);
-  }, [])
+  }, [addUser,router])
 
   return (
     <html lang="en">

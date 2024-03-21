@@ -1,44 +1,40 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useUIStore } from "../../store";
 import { ItemTour, Spinner } from "../../components";
+import Image from "next/image";
 
 export default function Home() {
 
   const user = useUIStore((state) => state.user)
 
   const [datos, setDatos] = useState({
-    registros:[],
-    cargando: false
+    registros: [],
+    cargando: true
   });
 
   useEffect(() => {
-
-    const obtenerDatos = async () => {
+    const obtenerDatos = async() => {
       try {
-        setDatos({ ...datos, cargando:true})
         const response = await fetch('/api/lista-tours');
         const data = await response.json();
         setDatos({
-          registros:data,
+          registros: data,
           cargando: false
         });
       } catch (error) {
-        alert('Algo paso, comunicar con soporte')
+        alert('Algo pasó, comunica con soporte');
         throw error;
       }
     };
-
-    if (datos?.registros.length == 0) {
-      obtenerDatos();
-    }
+    obtenerDatos();
   }, [user]);
 
   return (
     <>
       <div className="sm:flex justify-center items-center">
-        <img src="./travel-welcome.svg" width={200} alt="Travel" />
+        <Image src="./travel-welcome.svg" height={300} width={200} alt="Travel" />
         <div className="flex items-center justify-center gap-5 text-2xl font-bold">
           <p className="">Disponibilidad</p>
         </div>
@@ -48,47 +44,49 @@ export default function Home() {
           <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
             <div className="overflow-hidden">
               {
-                (datos?.cargando == true)? 
-                <Spinner />:
-                <table className="min-w-full">
-                  <thead className="bg-white border-b">
-                    <tr>
-                      <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                        Inicio
-                      </th>
-                      <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                        Fin
-                      </th>
-                      <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                        Agencia
-                      </th>
-                      <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                        Programa
-                      </th>
-                      <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                        Tour
-                      </th>
-                      <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                        Categoria
-                      </th>
-                      <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                        # Pasajeros
-                      </th>
-                      <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                        Vendedor
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {
-                      (datos?.registros.length > 0)?
-                      datos?.registros?.map((dato, index) => (
-                        <ItemTour key={index} dato={dato} />
-                      )):
-                      <p className="my-5 font-bold">No hay registros</p>
-                    }
-                  </tbody>
-                </table>
+                (datos?.cargando == true) ?
+                  <Spinner /> :
+                  <table className="min-w-full">
+                    <thead className="bg-white border-b">
+                      <tr>
+                        <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                          Inicio
+                        </th>
+                        <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                          Fin
+                        </th>
+                        <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                          Agencia
+                        </th>
+                        <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                          Programa
+                        </th>
+                        <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                          Tour
+                        </th>
+                        <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                          Categoria
+                        </th>
+                        <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                          # Pasajeros
+                        </th>
+                        <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                          Vendedor
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {
+                        (datos?.registros.length > 0) ?
+                          datos?.registros?.map((dato, index) => (
+                            <ItemTour key={index} dato={dato} />
+                          )) :
+                          <tr className="my-5 font-bold">
+                            <td>No hay registros</td>
+                          </tr>
+                      }
+                    </tbody>
+                  </table>
               }
             </div>
           </div>

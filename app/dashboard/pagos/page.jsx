@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { PagoVendedor } from "../../../components";
 import { BsPersonArmsUp } from "react-icons/bs";
 import { GrRestroomWomen } from "react-icons/gr";
@@ -10,14 +10,12 @@ export default function Home() {
   const [datos, setDatos] = useState({
     VendedorUno: [],
     VendedorDos: [],
-    cargando: false
+    cargando: true
   });
 
   useEffect(() => {
-
-    const obtenerDatos = async () => {
+    const obtenerDatos = async() => {
       try {
-        setDatos({ ...datos, cargando: true })
         const response = await fetch('/api/comisiones');
         const data = await response.json();
         setDatos({
@@ -26,13 +24,12 @@ export default function Home() {
           cargando: false
         });
       } catch (error) {
-        alert('Algo paso, comunicar con soporte')
+        alert('Algo pasó, comunica con soporte');
         throw error;
       }
     };
     obtenerDatos();
-  }, []);
-
+  }, [datos]);
 
   return (
     <>

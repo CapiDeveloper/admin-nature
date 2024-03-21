@@ -15,24 +15,23 @@ export default function Home() {
     cargando: true
   });
 
-  const fetchTours = async () => {
-    try {
-      const resp = await fetch(`/api/tours?id=${user.id}`);
-      const toursData = await resp.json();
-      setTours({
-        cargando: false,
-      });
-      setHistorialTours(toursData.tours);
-    } catch (error) {
-      alert('Algo paso en el servidor, llamar a soporte')
-      throw error;
-    }
-  };
-
   useEffect(() => {
+    const fetchTours = async () => {
+      try {
+        const resp = await fetch(`/api/tours?id=${user.id}`);
+        const toursData = await resp.json();
+        setTours({
+          cargando: false,
+        });
+        setHistorialTours(toursData.tours);
+      } catch (error) {
+        alert('Algo paso en el servidor, llamar a soporte')
+        throw error;
+      }
+    };
     if (user.id == undefined) return;
     fetchTours();
-  }, [user]);
+  }, [user,setHistorialTours]);
   return (
     <>
       <FiltroHistorial />
