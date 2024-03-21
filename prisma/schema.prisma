@@ -4,36 +4,36 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
-generator client {
+ generator client {
   provider = "prisma-client-js"
 }
 
-datasource db {
+ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-model CategoriaTour {
+ model CategoriaTour {
   id        String     @id @default(uuid())
   nombre    String
   tours     Tour[]
   programas Programa[]
 }
 
-model CategoriaHotel {
+ model CategoriaHotel {
   id     String @id @default(uuid())
   nombre String
   tours  Tour[]
 }
 
-model Metodo_pago {
+ model Metodo_pago {
   id            String         @id @default(uuid())
   nombre        String
   porcentaje    Int
   pago_clientes Pago_cliente[]
 }
 
-model Estado_pago {
+ model Estado_pago {
   id            String         @id @default(uuid())
   nombre        String
   color         String
@@ -41,14 +41,14 @@ model Estado_pago {
   pago_clientes Pago_cliente[]
 }
 
-model Agencia {
+ model Agencia {
   id         String @id @default(uuid())
   nombre     String
   porcentaje Int
   tours      Tour[]
 }
 
-model Programa {
+ model Programa {
   id              String        @id @default(uuid())
   nombre          String
   codigo          String?
@@ -59,7 +59,7 @@ model Programa {
   comisiones      Comision[]
 }
 
-model Comision {
+ model Comision {
   id         String   @id @default(uuid())
   cantidad   Decimal
   mes        String
@@ -71,7 +71,7 @@ model Comision {
   userId     String
 }
 
-model Tour {
+ model Tour {
   id              String    @id @default(uuid())
   nombre_pasajero String
   inicio          DateTime?
@@ -104,7 +104,7 @@ model Tour {
   comisiones   Comision[]
 }
 
-model Proveedor {
+ model Proveedor {
   id             String      @id @default(uuid())
   nombre         String
   pago           Decimal
@@ -115,7 +115,7 @@ model Proveedor {
   estado_pago_Id String
 }
 
-model User {
+ model User {
   id         String     @id @default(uuid())
   nombre     String
   password   String
@@ -125,7 +125,7 @@ model User {
   comisiones Comision[]
 }
 
-model Pago_cliente {
+ model Pago_cliente {
   id             String      @id @default(uuid())
   cantidad       Decimal
   registro       DateTime    @default(now())
@@ -138,7 +138,7 @@ model Pago_cliente {
   metodo_pago_Id String
 }
 
-model Gasto {
+ model Gasto {
   id       String  @id @default(uuid())
   tour     Tour    @relation(fields: [tourId], references: [id])
   tourId   String
