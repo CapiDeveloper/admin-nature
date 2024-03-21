@@ -12,7 +12,7 @@ export { ListaProgramas } from './programas/lista-programas/ListaProgramas'
 export { ProgramaAcciones } from './programas/programa-acciones/ProgramaAcciones'
 export { AgregarPrograma } from './programas/agregar-programa/AgregarPrograma'
 export { ModalEditarPrograma } from './programas/modal-editar/ModalEditarPrograma'
-
+export { PagoVendedor } from './pagos/pago-vendedor/PagoVendedor'
 
 
 

@@ -8,7 +8,8 @@ const urls = [
     { opcion: 'Inicio', path:'/dashboard' },
     { opcion: 'Registrar', path:'/dashboard/registrar-tour' },
     { opcion: 'Historial', path:'/dashboard/historial' },
-    { opcion: 'Programas', path:'/dashboard/programas' }
+    { opcion: 'Programas', path:'/dashboard/programas' },
+    { opcion: 'Pagos', path:'/dashboard/pagos' },
 ];
 
 export const Menu = () => {
