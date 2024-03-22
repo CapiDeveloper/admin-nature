@@ -17,7 +17,7 @@ export async function POST(request) {
     const programaCreado = await prisma.Programa.create({
         data: {
             nombre: body?.nombre,
-            categoriaTourId: body?.categoriaTourId
+            categoriaId: body?.categoriaId
         }
     });
     const programaRegresar = await prisma.Programa.findUnique({
@@ -44,7 +44,7 @@ export async function PUT(request) {
         where: { id:body?.id },
         data: {
             nombre: body?.nombre,
-            categoriaTourId: body?.categoriaTourId
+            categoriaId: body?.categoriaId
         }
     });
     const programaRegresar = await prisma.Programa.findUnique({
