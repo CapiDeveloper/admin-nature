@@ -53,8 +53,8 @@
   nombre          String
   codigo          String?
   nota            String?
-  categoria_tour  CategoriaTour @relation(fields: [categoriaTourId], references: [id])
-  categoriaTourId String
+  categoria_tour  CategoriaTour @relation(fields: [categoriaId], references: [id])
+  categoriaId String
   tours           Tour[]
   comisiones      Comision[]
 }
