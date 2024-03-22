@@ -8,7 +8,7 @@ export const AgregarPrograma = () => {
     const [programas, setProgramas] = useState([]);
     const [infoPrograma, setInfoPrograma] = useState({
         nombre: "",
-        categoriaTourId: ""
+        categoriaTourId: "" 
     });
     const onChangeValue = ({ target }) => {
         setInfoPrograma({
