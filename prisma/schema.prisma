@@ -50,11 +50,11 @@
 
     model Programa {
       id              String        @id @default(uuid())
-      nombre          String
+      nombre          String?
       codigo          String?
       nota            String?
-      categoria_tour  CategoriaTour @relation(fields: [categoriaId], references: [id])
-      categoriaId String
+      categoria_tour  CategoriaTour @relation(fields: [categoriaTourId], references: [id])
+      categoriaTourId String
       tours           Tour[]
       comisiones      Comision[]
     }
