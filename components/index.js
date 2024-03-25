@@ -20,5 +20,8 @@ export { FiltroHistorial } from './ui/filtro-historial/FiltroHistorial'
 export { Spinner } from './ui/spinner/Spinner'
 export { Proveedor } from './ui/Proveedor'
 export { ItemTour } from './dashboard/item-tour/ItemTour'
+export { ClientePendiente } from './dashboard/item-tour/ClientePendiente'
+export { ProveedorTotal } from './dashboard/item-tour/ProveedorTotal'
+
 export { ProveedorAcciones } from './ui/acciones/ProveedorAcciones';
 export { AbonoClienteAcciones } from './ui/acciones/AbonoClienteAcciones';

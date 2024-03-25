@@ -13,6 +13,8 @@ import { ProveedorAcciones } from "../../../ui/acciones/ProveedorAcciones"
 import { ModalEditarProveedor } from "../../../ui/modal/ModalEditarProveedor"
 import { AbonoClienteAcciones } from "../../../ui/acciones/AbonoClienteAcciones"
 import { ModalEditarCliente } from "../../../ui/modal/ModalEditarCliente"
+import { ClientePendiente } from "../../item-tour/ClientePendiente"
+import { ProveedorTotal } from "../../item-tour/ProveedorTotal"
 
 export const Editar = ({ id }) => {
 
@@ -158,6 +160,7 @@ export const Editar = ({ id }) => {
                         }
                     </tbody>
                 </table>
+                <ClientePendiente clientes={pagoClientesTour} ValorProforma={tour.valor_proforma}  />
                 <AgregarProveedor id={id} />
                 <table className="w-full text-sm text-left rtl:text-right mt-5">
 
@@ -169,8 +172,8 @@ export const Editar = ({ id }) => {
                         }
                     </tbody>
                 </table>
-                <p className="text-end text-xl mt-7">Comision vendedor: <span className="font-bold border-b-2 border-b-green-600">{ ((tour?.valor_proforma * tour?.agencia?.porcentaje)/100).toString()  }$</span></p>
-                
+                <ProveedorTotal proveedores={proveedorestour}  />
+                <p className="text-end text-xl mt-7">Comision vendedor: <span className="font-bold border-b-2 border-b-green-600">{ ((tour?.valor_proforma * tour?.agencia?.porcentaje)/100).toString()  }$</span></p>          
                 <fieldset className="my-7">
                     <div>
                         <label htmlFor="nota" className="block mb-2 text-base font-medium text-gray-900">Notas</label>
