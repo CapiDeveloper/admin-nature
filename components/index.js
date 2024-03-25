@@ -15,7 +15,6 @@ export { ModalEditarPrograma } from './programas/modal-editar/ModalEditarProgram
 export { PagoVendedor } from './pagos/pago-vendedor/PagoVendedor'
 
 
-
 export { AbonoCliente } from './ui/AbonoCliente'
 export { FiltroHistorial } from './ui/filtro-historial/FiltroHistorial'
 export { Spinner } from './ui/spinner/Spinner'

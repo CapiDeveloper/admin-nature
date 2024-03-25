@@ -4,12 +4,14 @@ import { RxUpdate } from "react-icons/rx";
 
 import Link from "next/link"
 import { useUIStore } from "../../../../store";
+import { AbonoCliente } from "../../../ui/AbonoCliente";
+import { Proveedor } from "../../../ui/Proveedor";
 
 export const Card = ({ tour }) => {
 
   const user = useUIStore((state) => state.user);
   const deleteHistorialTour = useUIStore((state) => state.deleteHistorialTour);
-  
+
 
   const fechaInicio = new Date(tour?.inicio).toLocaleDateString();
   const fechaFinaliza = new Date(tour?.finaliza).toLocaleDateString();
@@ -27,7 +29,7 @@ export const Card = ({ tour }) => {
       deleteHistorialTour(data)
     } catch (error) {
       alert('No se puede eliminar el tour');
-      throw error; 
+      throw error;
     }
   }
 
@@ -52,27 +54,41 @@ export const Card = ({ tour }) => {
           <li><span className="font-bold">Vendedor:</span> {tour?.user?.nombre}</li>
         }
       </ul>
-
-      <div className="h-[2px] bg-gray-200 w-11/12 my-5 mx-auto"></div>
-
-      <div className="relative overflow-x-auto">
-        <table className="w-full text-sm text-left rtl:text-right">
-          <tbody>
-            {/* Componente Proveedor */}
-          </tbody>
-        </table>
-      </div>
-
-      <div className="h-[2px] bg-gray-200 w-11/12 my-5 mx-auto"></div>
-
-      <div className="relative overflow-x-auto">
-        <table className="w-full text-sm text-left rtl:text-right">
-
-          <tbody>
-            {/* Componente Abono cliente */}
-          </tbody>
-        </table>
-      </div>
+      {
+        tour?.proveedores?.length > 0 && (
+          <div>
+            <p className="font-bold mt-5">Pago de Proveedores:</p>
+            <div className="relative overflow-x-auto">
+              <table className="w-full text-sm text-left rtl:text-right">
+                <tbody className="divide-y-2 divide-gray-300">
+                  {
+                    tour?.proveedores?.map((proveedor)=>(
+                      <Proveedor proveedor={proveedor} key={proveedor?.id} />
+                    ))
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )
+      }
+      {
+        tour?.pago_cliente?.length > 0 &&
+        <div>
+          <p className="font-bold mt-5">Pago de Clientes:</p>
+          <div className="relative overflow-x-auto">
+            <table className="w-full text-sm text-left rtl:text-right">
+              <tbody className="divide-y-2 divide-gray-300">
+                {
+                  tour?.pago_cliente?.map((cliente) => (
+                    <AbonoCliente key={cliente?.id} cliente={cliente} />
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      }
       <div className="flex justify-between mt-5">
         <button onClick={() => onDelete(tour?.id)} className="bg-red-700 hover:bg-red-800 text-white rounded py-2 px-5" type="">Eliminar</button>
         <Link className="bg-blue-700 hover:bg-blue-800 text-white rounded py-2 px-5" href={`tour/${tour?.id}`}>Editar</Link>
