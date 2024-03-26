@@ -19,7 +19,7 @@ export const AbonoClienteAcciones = ({cliente}) => {
       const data = await resp.json();
       if(data){
         // Actualizar estado de proveedores
-        deletePagoCliente(info)
+        deletePagoCliente(info?.id)
         return;
       }
       return alert('No se puede Eliminar pago del cliente')
@@ -48,7 +48,7 @@ export const AbonoClienteAcciones = ({cliente}) => {
         // (user?.rol == 0) &&
         <td className="px-6 py-4 flex gap-2">
           <button onClick={()=>onAddIdPago(cliente?.id)} className="bg-blue-700 hover:bg-blue-900 text-white p-1 rounded-lg" type="button">Editar</button>
-          <button onClick={()=>onDeleteClient(cliente?.id)} className="bg-red-700 hover:bg-red-900 text-white p-1 rounded-lg" type="button">Eliminar</button>
+          <button onClick={()=>onDeleteClient(cliente)} className="bg-red-700 hover:bg-red-900 text-white p-1 rounded-lg" type="button">Eliminar</button>
         </td>
       }
     </tr>

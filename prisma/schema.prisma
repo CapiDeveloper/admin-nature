@@ -44,7 +44,7 @@
  model Agencia {
   id         String @id @default(uuid())
   nombre     String
-  porcentaje Int
+  porcentaje Decimal
   tours      Tour[]
 }
 

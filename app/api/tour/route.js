@@ -24,23 +24,18 @@ export async function POST(request) {
             }
         })
 
-        const tourCreado = await prisma.Tour.findUnique({
-            where: { id: tour?.id },
-            include: {
-                agencia: true
-            }
-        })
-
+        // Creamos comisión
         const InicioFechaComision = body.inicio.split('T')[0].split('-')[0] + '-' + body.inicio.split('T')[0].split('-')[1];
         await prisma.Comision.create({
             data: {
-                cantidad: ((parseInt(body.valor_proforma) * tourCreado?.agencia?.porcentaje) / 100),
+                cantidad: 0,
                 mes: InicioFechaComision,
                 programaId: body.programaId,
                 tourId: tour?.id,
                 userId: body.userId
             }
         });
+        
         // Creamos los gastos
         await prisma.Gasto.create({
             data: {
